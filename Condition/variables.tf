@@ -1,4 +1,4 @@
-var tags{
+variable tags{
     type = map
     default = {
         Project = "Roboshop"
@@ -6,7 +6,12 @@ var tags{
     }
 }
 
-var instances {
+variable instances {
     type = list
     default = ["Catalogue","Mongodb","Payment"]
+}
+
+variable environment {
+    type = string
+    default = "dev"
 }

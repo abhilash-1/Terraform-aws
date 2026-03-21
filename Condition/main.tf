@@ -1,10 +1,12 @@
 resource "aws_instance" "roboshop" {
   count = length(var.instances)  
-  ami = "resolve:ssm:/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-x86_64"
+  ami = "ami-0220d79f3f480ecf5"
   instance_type = "t3.micro"
+  vpc_security_group_ids = [local.sg_id]
 
-  tags = (merge var tags,
+  tags = merge( var.tags ,
    {
-    Name = 
+    Name = "${var.instances[count.index]}-${var.environment}"
   })
+
 }
